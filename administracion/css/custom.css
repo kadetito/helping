@@ -1,0 +1,28 @@
+.modal-lg {
+    max-width: 60% !important;
+}
+
+.row.vdivide [class*='form-control']:not(:last-child):after {
+  background: #e0e0e0;
+  width: 1px;padding-left:15px;padding-right:14px;
+  content: "";
+  display:block;
+  position: absolute;
+  top:0;
+  bottom: 0;
+  right: 0;
+  min-height: 70px;
+}
+
+
+.fa-eye-slash{color:#ea185c;}
+.fa-eye{color:#5897fb;}
+.limnp a{color:#000;}
+.limnp a:hover{color:#666666;}
+.limnp button{padding:0px;border:0px;background-color:transparent;}
+
+
+.fa-eye-slash{color:#ea185c;}
+.fa-eye{color:#5897fb;}
+.fa-eye-slash:hover{color:#333333;}
+.fa-eye:hover{color:#333333;}
