@@ -1,7 +1,9 @@
 Options +FollowSymLinks
 RewriteEngine on
-RewriteBase /eventos
-
+RewriteCond %{HTTP_HOST} ^webentorn.com$ [NC,OR]
+RewriteCond %{HTTP_HOST} ^www.webentorn.com$
+RewriteCond %{REQUEST_URI} !eventos/
+RewriteRule (.*) /eventos/$1 [L]
 
 
 Rewriterule ^(.*)/*(css|Fotos|fotos_baja|docs|im|img|js|fonts|estils|estructura|files)/(.*)$  $2/$3      [NC,L]

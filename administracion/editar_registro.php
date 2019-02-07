@@ -12,7 +12,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', '1');
 $seccionactual = filter_input(INPUT_GET, 'seccion');
 $paginaActual = filter_input(INPUT_GET, 'pagina');
-
+$identificadorregistro= filter_input(INPUT_GET, 'identificadorregistro');
 //conexion a bbdd--------------------------------------------------
 require_once '../path.php';
 require_once ROOT_DIR.'/lib/conexion.php';

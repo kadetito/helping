@@ -127,7 +127,7 @@ foreach($bucle_ComerciosAdmin as $itemAdmin):
                                         <td>'.$itemAdmin['fecha_alta'].'</td>
                                         <td class="text-right limnp">
                                         <div class="row m-0"> 
-                                       <div class="col-4"><a href="'.BASE_URL.'/administrador/'.$thisSeccion.'/'.$thisPagina.'/'.$itemAdmin['id_come'].'"><i class="fas fa-pen-square fa-2x"></i></a></div>';
+                                       <div class="col-4"><a href="'.BASE_URL.'/administracion/adh/'.$thisSeccion.'/'.$thisPagina.'/'.$itemAdmin['id_come'].'"><i class="fas fa-pen-square fa-2x"></i></a></div>';
                                      if($visible=='S'){
                                          $bucleComerciosAdmin.='<div class="col-4"><form action="" method="POST"><input type="hidden" name="activo" value="N" /><input type="hidden" name="id_come" value="'.$itemAdmin['id_come'].'" /><button type="submit" name="activando"><i class="far fa-eye fa-2x"></i></button></form></div>';
                                      } else {

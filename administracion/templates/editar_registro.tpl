@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="css/grasp_mobile_progress_circle-1.0.0.min.css">
     <link rel="stylesheet" href="vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css">
     <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
-    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="../../../css/custom.css">
     <link rel="shortcut icon" href="img/favicon.ico">
      <script src="vendor/jquery/jquery.min.js"></script>
      <script src="js/sweetalert2.all.min.js"></script>
