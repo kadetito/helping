@@ -18,8 +18,8 @@
           <ul id="side-main-menu" class="side-menu list-unstyled">                  
             <li><a href="index.php"> <i class="icon-home"></i>Home</a></li>
        
-            <li><a href="#ComerciosDrop" {if $seccionactual eq "comercios"}aria-expanded="true" class=""{else}aria-expanded="false" {/if} data-toggle="collapse"> <i class="icon-interface-windows"></i>Comercios </a>
-              <ul id="ComerciosDrop" class="collapse list-unstyled {if $seccionactual eq "comercios"}show{/if}">
+            <li><a href="#ComerciosDrop" {if $seccionactual eq "comercios" or $seccionactual eq "categorias"}aria-expanded="true" class=""{else}aria-expanded="false" {/if} data-toggle="collapse"> <i class="icon-interface-windows"></i>Comercios </a>
+              <ul id="ComerciosDrop" class="collapse list-unstyled {if $seccionactual eq "comercios"  or $seccionactual eq "categorias"}show{/if}">
                 <li {if $paginaActual eq "lista_comercios"}class="active"{/if}><a href="{$ruta}/administracion/lista_comercios.php">Comercios</a></li>
                 <li {if $paginaActual eq "lista_categorias"}class="active"{/if}><a href="{$ruta}/administracion/lista_categorias.php">Categorias</a></li>
                 <li {if $paginaActual eq "tipos_comercio"}class="active"{/if}><a href="{$ruta}/administracion/tipos_comercio.php">Tipos de Comercio</a></li>

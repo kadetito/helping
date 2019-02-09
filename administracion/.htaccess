@@ -40,3 +40,6 @@ RewriteCond %{REQUEST_FILENAME} !-d
 
 RewriteRule ^adh/([0-9a-z_-]+)/([0-9a-z_-]+)/([^/]*)?$ editar_registro.php?seccion=$1&pagina=$2&idendoregis=$3 [L]
 RewriteRule ^adh/([0-9a-z_-]+)/([0-9a-z_-]+)/([^/]*)/([^/]*)?$ editar_registro.php?seccion=$1&pagina=$2&idendoregis=$3&okdel=$4 [L]
+
+RewriteRule ^adc/([0-9a-z_-]+)/([0-9a-z_-]+)/([^/]*)?$ editar_categoria.php?seccion=$1&pagina=$2&idendoregis=$3 [L]
+RewriteRule ^adc/([0-9a-z_-]+)/([0-9a-z_-]+)/([^/]*)/([^/]*)?$ editar_categoria.php?seccion=$1&pagina=$2&idendoregis=$3&okdol=$4 [L]

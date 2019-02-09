@@ -23,7 +23,7 @@ $exitoOperacionDelCat='';
 $i = 0;
  //MUESTRO CATEGORIAS EN DIVEROSS ESTADOS
 //-------------------------------------------------------------------------
-$thisSeccion='categorias';
+$thisSeccion='comercios';
 $thisPagina= 'lista_categorias';
 $resultado = Categorias::consulta();
 $bucle_categorias = $resultado[0];//me llega un array de los registros mas las paginas etc del metodo consulta
@@ -45,7 +45,7 @@ foreach($bucle_categorias as $item):
                                        
                                         <td class="text-right limnp">
                                         <div class="row m-0"> 
-                                       <div class="col-4"><a href="'.BASE_URL.'/administracion/adh/'.$thisSeccion.'/'.$thisPagina.'/'.$item['id_cate'].'"><i class="fas fa-pen-square fa-2x"></i></a></div>';                              
+                                       <div class="col-4"><a href="'.BASE_URL.'/administracion/adc/'.$thisSeccion.'/'.$thisPagina.'/'.$item['id_cate'].'"><i class="fas fa-pen-square fa-2x"></i></a></div>';                              
                 $bucleCategoriasAdmin.='<div class="col-4"><form action="" method="POST"><input type="hidden" name="id_cate" value="'.$item['id_cate'].'" /><button type="submit" name="eliminarcategoria"><i class="fas fa-trash-alt fa-2x"></i></button></form></div>
                     
                                             </div>

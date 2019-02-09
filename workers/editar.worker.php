@@ -39,11 +39,11 @@ $getNombrePoblacion = '';
 $getNombreSector ='';
 $getTicoNombre = '';
 $getCategoriaNombre = '';
-$tipoCons = '';
-$getPagina = '';
+
 $idrequest = '';
-
-
+$getId_cateGoria = '';
+$getNombreCateg = '';
+$getAliasCateg = '';
 
 //----------------------------------------------------------------------  
 //
@@ -70,8 +70,10 @@ $idrequest = '';
            $tipoCons = filter_input(INPUT_GET, 'seccion');
            $getPagina = filter_input(INPUT_GET, 'pagina');
            $idrequest = $identificador;
-           
-
+    ///si la peticion la hacemos desde alguna seccion que no contenga fotos           
+    if($getPagina=='lista_categorias'){
+        
+    } else {
             //** consulta todas las fotos de este comercio
             //----------------------------------------------------------------------                
             $resultadoBucleFoto = Fotos::consultaTodasFotosAdmin($idrequest,$tipoCons);
@@ -85,54 +87,65 @@ $idrequest = '';
                       $bucleTodasFotosAdmin.= 'No hay fotos todavía';    
                 }   
             endforeach; 
-            
+    }         
             //** consulta el detalle de este comercio
             //----------------------------------------------------------------------             
-            switch ($tipoCons){
-                
+            switch ($tipoCons){ 
+                //si el sector es 
                case "comercios":
-                    $get_comer = Comercios::consultaDetalle($idrequest); 
-                     $getId_come                 =$get_comer->getIdcome();
-                     $getId_cate                 =$get_comer->getIdcate();
-                    $get_NomCateg = Categorias::consultadeIdaAlias($getId_cate);
-                     $getCategoriaNombre         =$get_NomCateg->getNombre();
-                     $getId_prov                 =$get_comer->getIdprov();
-                     $identi = $getId_prov;
-                    $get_NomPr = Provincias::consultadeIdaAlias($getId_prov); 
-                     $getNombreProvincia         =$get_NomPr->getNombreProv();
-                     $getAlias_provincia         =$get_comer->getAliasprovincia();
-                     $getId_pobl                 =$get_comer->getIdpobl();
-                    $get_NomPobl = Poblaciones::consultadeIdaAlias($getId_pobl);
-                     $getNombrePoblacion         =$get_NomPobl->getNombrePobl();
-                     $getId_sect                 =$get_comer->getIdsect();
-                    $get_NomSect = Sectores::consultadeIdaAlias($getId_sect); 
-                     $getNombreSector            =$get_NomSect->getNombreSect();               
-                     $getNombre_comercio         =$get_comer->getNombrecomercio();
-                     $getDescripcion_comercio    =$get_comer->getDescripcioncomercio();
-                     $getFecha_alta              =$get_comer->getFechaalta();
-                     $getBreve_comercio          =$get_comer->getBrevecomercio();
-                     $getId_tico                 =$get_comer->getIdtico();
-                    $get_NomTico = Tico::consultadeIdaAlias($getId_tico); 
-                     $getTicoNombre              =$get_NomTico->getNombreTico();
-                     $getEmail_comercio          =$get_comer->getEmailcomercio();
-                     $getDireccion_comercio      =$get_comer->getDireccioncomercio();
-                     $getCodigo_postal           =$get_comer->getCodigopostal();
-                     $getTelefono_comercio       =$get_comer->getTelefonocomercio();
-                     $getFax_comercio            =$get_comer->getFaxcomercio();
-                     $getUrl_comercio            =$get_comer->getUrlcomercio();
-                     $getFacebook_comercio       =$get_comer->getFacebookcomercio();
-                     $getTwitter_comercio        =$get_comer->getTwittercomercio();
-                     $getInstagram_comercio      =$get_comer->getInstagramcomercio();
-                     $getYoutube_comercio        =$get_comer->getYoutubecomercio();
-                     $getCcomercio_destacado     =$get_comer->getCcomerciodestacado();
-                     $getMetas                   =$get_comer->getMetas();
-                     $getGuia                    =$get_comer->getGuia();
-                     break;
+                     switch ($getPagina){ 
+                           //si la pagina es
+                            case "lista_comercios":
+                                 $get_comer = Comercios::consultaDetalle($idrequest); 
+                                  $getId_come                 =$get_comer->getIdcome();
+                                  $getId_cate                 =$get_comer->getIdcate();
+                                 $get_NomCateg = Categorias::consultadeIdaAlias($getId_cate);
+                                  $getCategoriaNombre         =$get_NomCateg->getNombre();
+                                  $getId_prov                 =$get_comer->getIdprov();
+                                  $identi = $getId_prov;
+                                 $get_NomPr = Provincias::consultadeIdaAlias($getId_prov); 
+                                  $getNombreProvincia         =$get_NomPr->getNombreProv();
+                                  $getAlias_provincia         =$get_comer->getAliasprovincia();
+                                  $getId_pobl                 =$get_comer->getIdpobl();
+                                 $get_NomPobl = Poblaciones::consultadeIdaAlias($getId_pobl);
+                                  $getNombrePoblacion         =$get_NomPobl->getNombrePobl();
+                                  $getId_sect                 =$get_comer->getIdsect();
+                                 $get_NomSect = Sectores::consultadeIdaAlias($getId_sect); 
+                                  $getNombreSector            =$get_NomSect->getNombreSect();               
+                                  $getNombre_comercio         =$get_comer->getNombrecomercio();
+                                  $getDescripcion_comercio    =$get_comer->getDescripcioncomercio();
+                                  $getFecha_alta              =$get_comer->getFechaalta();
+                                  $getBreve_comercio          =$get_comer->getBrevecomercio();
+                                  $getId_tico                 =$get_comer->getIdtico();
+                                 $get_NomTico = Tico::consultadeIdaAlias($getId_tico); 
+                                  $getTicoNombre              =$get_NomTico->getNombreTico();
+                                  $getEmail_comercio          =$get_comer->getEmailcomercio();
+                                  $getDireccion_comercio      =$get_comer->getDireccioncomercio();
+                                  $getCodigo_postal           =$get_comer->getCodigopostal();
+                                  $getTelefono_comercio       =$get_comer->getTelefonocomercio();
+                                  $getFax_comercio            =$get_comer->getFaxcomercio();
+                                  $getUrl_comercio            =$get_comer->getUrlcomercio();
+                                  $getFacebook_comercio       =$get_comer->getFacebookcomercio();
+                                  $getTwitter_comercio        =$get_comer->getTwittercomercio();
+                                  $getInstagram_comercio      =$get_comer->getInstagramcomercio();
+                                  $getYoutube_comercio        =$get_comer->getYoutubecomercio();
+                                  $getCcomercio_destacado     =$get_comer->getCcomerciodestacado();
+                                  $getMetas                   =$get_comer->getMetas();
+                                  $getGuia                    =$get_comer->getGuia();
+                                  break;
+                            case "lista_categorias":
+                                 $get_categ = Categorias::consultaDetalle($idrequest); 
+                                 $getNombreCateg           =$get_categ->getNombre();
+                                 $getAliasCateg           =$get_categ->getAliasCateg();
+                                 $getId_cateGoria          =$get_categ->getId();
+                                 break;
+                   }
+                   
             }
             
         }
  
-        // SI ENVIO EL FORMULARIO
+        // UPDATE - SI ENVIO EL FORMULARIO   
         // procedo al update
         //----------------------------------------------------------------------    
             $editar = filter_input(INPUT_POST, 'editar');
@@ -146,33 +159,48 @@ $idrequest = '';
                 //DETERMINO LOS DATOS SEGUN SECCION Y filtro las variables 
                 switch ($sector){
                     case "comercios":
-                            $setId_come              = filter_input(INPUT_POST, 'id_come');             
-                            $setId_cate              = filter_input(INPUT_POST, 'id_cate');             
-                            $setId_prov              = filter_input(INPUT_POST, 'id_provincia');             
-                            $setId_pobl              = filter_input(INPUT_POST, 'id_pobl');             
-                            $setId_tico              = filter_input(INPUT_POST, 'id_tico');             
-                            $setId_sect              = filter_input(INPUT_POST, 'id_sect');             
-                            $setComerTitulo          = filter_input(INPUT_POST, 'nombre_comercio');     
-                            $setBreve_comercio       = filter_input(INPUT_POST, 'breve_comercio');      
-                            $setDescripcion_comercio = filter_input(INPUT_POST, 'descripcion_comercio');
-                            $setEmail_comercio       = filter_input(INPUT_POST, 'email_comercio');      
-                            $setDireccion_comercio   = filter_input(INPUT_POST, 'direccion_comercio');  
-                            $setCodigo_postal        = filter_input(INPUT_POST, 'codigo_postal');       
-                            $setTelefono_comercio    = filter_input(INPUT_POST, 'telefono_comercio');   
-                            $setFax_comercio         = filter_input(INPUT_POST, 'fax_comercio');        
-                            $setUrl_comercio         = filter_input(INPUT_POST, 'url_comercio');        
-                            $setFacebook_comercio    = filter_input(INPUT_POST, 'facebook_comercio');   
-                            $setTwitter_comercio     = filter_input(INPUT_POST, 'twitter_comercio');    
-                            $setInstagram_comercio   = filter_input(INPUT_POST, 'instagram_comercio');  
-                            $setYoutube_comercio     = filter_input(INPUT_POST, 'youtube_comercio');    
-                            $setCcomercio_destacado  = filter_input(INPUT_POST, 'ccomercio_destacado'); 
-          
-                            $setMetas                = filter_input(INPUT_POST, 'metas');
-                            //metodo
-                            $get_MetodoUpdate = Comercios::updateTotalRegistro($setId_come,$setId_cate,$setId_prov,$setId_pobl,$setId_tico,$setId_sect,$setComerTitulo,$setBreve_comercio,$setDescripcion_comercio,$setEmail_comercio,$setDireccion_comercio,$setCodigo_postal,$setTelefono_comercio,$setFax_comercio,$setUrl_comercio,$setFacebook_comercio,$setTwitter_comercio,$setInstagram_comercio,$setYoutube_comercio,$setCcomercio_destacado,$setMetas); 
-                            //pagina de retorno
-                            $retornoUrl = BASE_URL."/administracion/adh/".$sector."/".$pagina."/".$setId_come;
-                            break;
+                        switch ($pagina){
+                            case "lista_comercios":
+                                    $setId_come              = filter_input(INPUT_POST, 'id_come');             
+                                    $setId_cate              = filter_input(INPUT_POST, 'id_cate');             
+                                    $setId_prov              = filter_input(INPUT_POST, 'id_provincia');             
+                                    $setId_pobl              = filter_input(INPUT_POST, 'id_pobl');             
+                                    $setId_tico              = filter_input(INPUT_POST, 'id_tico');             
+                                    $setId_sect              = filter_input(INPUT_POST, 'id_sect');             
+                                    $setComerTitulo          = filter_input(INPUT_POST, 'nombre_comercio');     
+                                    $setBreve_comercio       = filter_input(INPUT_POST, 'breve_comercio');      
+                                    $setDescripcion_comercio = filter_input(INPUT_POST, 'descripcion_comercio');
+                                    $setEmail_comercio       = filter_input(INPUT_POST, 'email_comercio');      
+                                    $setDireccion_comercio   = filter_input(INPUT_POST, 'direccion_comercio');  
+                                    $setCodigo_postal        = filter_input(INPUT_POST, 'codigo_postal');       
+                                    $setTelefono_comercio    = filter_input(INPUT_POST, 'telefono_comercio');   
+                                    $setFax_comercio         = filter_input(INPUT_POST, 'fax_comercio');        
+                                    $setUrl_comercio         = filter_input(INPUT_POST, 'url_comercio');        
+                                    $setFacebook_comercio    = filter_input(INPUT_POST, 'facebook_comercio');   
+                                    $setTwitter_comercio     = filter_input(INPUT_POST, 'twitter_comercio');    
+                                    $setInstagram_comercio   = filter_input(INPUT_POST, 'instagram_comercio');  
+                                    $setYoutube_comercio     = filter_input(INPUT_POST, 'youtube_comercio');    
+                                    $setCcomercio_destacado  = filter_input(INPUT_POST, 'ccomercio_destacado'); 
+
+                                    $setMetas                = filter_input(INPUT_POST, 'metas');
+                                    //metodo
+                                    $get_MetodoUpdate = Comercios::updateTotalRegistro($setId_come,$setId_cate,$setId_prov,$setId_pobl,$setId_tico,$setId_sect,$setComerTitulo,$setBreve_comercio,$setDescripcion_comercio,$setEmail_comercio,$setDireccion_comercio,$setCodigo_postal,$setTelefono_comercio,$setFax_comercio,$setUrl_comercio,$setFacebook_comercio,$setTwitter_comercio,$setInstagram_comercio,$setYoutube_comercio,$setCcomercio_destacado,$setMetas); 
+                                    //pagina de retorno
+                                    $retornoUrl = BASE_URL."/administracion/adh/".$sector."/".$pagina."/".$setId_come;
+                                    break;
+                            case "lista_categorias":
+
+                                    $setId_cate             = filter_input(INPUT_POST, 'id_cate');                          
+                                    $setCateTitulo          = filter_input(INPUT_POST, 'nombre_categoria');
+                                    $setCateAlias          = filter_input(INPUT_POST, 'alias_categoria');
+                                    //metodo
+                                    $get_MetodoUpdate = Categorias::updateTotalRegistro($setId_cate,$setCateTitulo,$setCateAlias); 
+                                    //pagina de retorno
+                                    $retornoUrl = BASE_URL."/administracion/adc/".$sector."/".$pagina."/".$setId_cate;
+                                  
+                                    break;
+                              }
+
                       }
                     
                     //devuelvo mensaje exito y me quedo en el registro
@@ -322,6 +350,9 @@ $smarty->assign("getNombreSector",$getNombreSector,true);
 $smarty->assign("getTicoNombre",$getTicoNombre,true);
 
 $smarty->assign("getCategoriaNombre",$getCategoriaNombre,true);
+$smarty->assign("getId_cateGoria",$getId_cateGoria,true);
+$smarty->assign("getNombreCateg",$getNombreCateg,true);
+$smarty->assign("getAliasCateg",$getAliasCateg,true);
 
 $smarty->assign("reciboSector",$tipoCons,true);
 $smarty->assign("reciboPagina",$getPagina,true);

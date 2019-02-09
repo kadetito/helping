@@ -65,7 +65,7 @@ mb_http_output('UTF-8');
 				$this->imagen_categoria = $imagen_categoria;
 				$this->tags_categoria = $tags_categoria;
                                 $this->descripcion_categoria = $descripcion_categoria;
-                                 $this->alias_categoria = $alias_categoria;
+                                $this->alias_categoria = $alias_categoria;
 	    }
 	    
 
@@ -153,6 +153,59 @@ mb_http_output('UTF-8');
 	       }
            } 
            
+           
+             //**
+	     // OBTENER DETALLE
+	     // obtiene el detalle del registro pedido por url get
+	     //**
+  	     public static function consultaDetalle($idrequest){
+	       $conexion = new conexion(); 
+                  $conexion->exec("SET NAMES 'utf8'");
+               $consulta = $conexion->prepare("SELECT * FROM " . self::TABLA . " WHERE id_cate = :id_cate ");
+	       $consulta->execute(array(':id_cate' => $idrequest));
+	       $registro = $consulta->fetch();
+	       if($registro){ 
+	          return new self($registro['alias_categoria'],$registro['descripcion_categoria'],$registro['tags_categoria'],$registro['imagen_categoria'],$registro['nombre_categoria'],$idrequest);
+	       } else {
+	          return false;
+	       }
+            }  
+            
+            
+            
+              //**----------------------------
+	      // UPDATE TOTAL
+	      // actualiza todo el registro
+	      //**---------------------
+
+	     public static function updateTotalRegistro($setId_cate,$setCateTitulo,$setCateAlias){           
+                    function limpiaEspacios($cadena){
+                        $cadena = str_replace(' ', '', $cadena);
+                        return strtolower($cadena);
+                    }
+                   $conexion = new Conexion();
+                    $conexion->exec("SET NAMES 'utf8'");
+                    $setCateTituloParseado = limpiaEspacios($setCateTitulo);
+                    $setCateTituloFiltrado = filtrourl($setCateTituloParseado);
+                    $consulta = $conexion->prepare('UPDATE ' . self::TABLA .' SET 
+                    nombre_categoria  = :setCateTitulo,
+                    alias_categoria  = :setCateAlias
+                       WHERE id_cate = :setId_cate');
+                    $consulta->bindParam(':setCateTitulo',$setCateTitulo);
+                    if(isset($setCateAlias)){
+                     $consulta->bindParam(':setCateAlias', $setCateTituloFiltrado);
+                    } else {
+                     $consulta->bindParam(':setCateAlias', $setCateAlias);    
+                    }
+                   $consulta->bindParam(':setId_cate', $setId_cate);
+                   $consulta->execute();
+                   $conexion = null; //cierro conexion
+	      }     
+             
+             
+             
+             
+             
            
            
             public function eliminarRegistroCat($id_cate){
