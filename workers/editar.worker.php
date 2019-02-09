@@ -193,12 +193,18 @@ $getTagsCateg='';
                                     break;
                             case "lista_categorias":
 
+                                
+                                    
+                                
                                     $setId_cate             = filter_input(INPUT_POST, 'id_cate');                          
                                     $setCateTitulo          = filter_input(INPUT_POST, 'nombre_categoria');
                                     $setCateAlias          = filter_input(INPUT_POST, 'alias_categoria');
+                                    $setDesAlias          = filter_input(INPUT_POST, 'descripcion_categoria');
+                                    $tagsSetCategoria     = filter_input(INPUT_POST, 'tags_categoria');
                                     //metodo
-                                    $get_MetodoUpdate = Categorias::updateTotalRegistro($setId_cate,$setCateTitulo,$setCateAlias); 
+                                    $get_MetodoUpdate = Categorias::updateTotalRegistro($setCateAlias,$tagsSetCategoria,$setDesAlias,$setCateTitulo,$setId_cate); 
                                     //pagina de retorno
+                                    
                                     $retornoUrl = BASE_URL."/administracion/adc/".$sector."/".$pagina."/".$setId_cate;
                                   
                                     break;

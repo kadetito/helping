@@ -173,7 +173,7 @@ mb_http_output('UTF-8');
 	      // actualiza todo el registro
 	      //**---------------------
 
-	     public static function updateTotalRegistro($setId_cate,$setCateTitulo,$setCateAlias){           
+	     public static function updateTotalRegistro($setCateAlias,$tagsSetCategoria,$setDesAlias,$setCateTitulo,$setId_cate){           
                     function limpiaEspacios($cadena){
                         $cadena = str_replace(' ', '', $cadena);
                         return strtolower($cadena);
@@ -184,7 +184,9 @@ mb_http_output('UTF-8');
                     $setCateTituloFiltrado = filtrourl($setCateTituloParseado);
                     $consulta = $conexion->prepare('UPDATE ' . self::TABLA .' SET 
                     nombre_categoria  = :setCateTitulo,
-                    alias_categoria  = :setCateAlias
+                    alias_categoria  = :setCateAlias,
+                    descripcion_categoria = :tagsSetCategoria,
+                    tags_categoria = :setDesAlias
                        WHERE id_cate = :setId_cate');
                     $consulta->bindParam(':setCateTitulo',$setCateTitulo);
                     if(isset($setCateAlias)){
@@ -192,7 +194,9 @@ mb_http_output('UTF-8');
                     } else {
                      $consulta->bindParam(':setCateAlias', $setCateAlias);    
                     }
-                   $consulta->bindParam(':setId_cate', $setId_cate);
+                    $consulta->bindParam(':setDesAlias', $setDesAlias);
+                    $consulta->bindParam(':tagsSetCategoria', $tagsSetCategoria);  
+                    $consulta->bindParam(':setId_cate', $setId_cate);
                    $consulta->execute();
                    $conexion = null; //cierro conexion
 	      }     
