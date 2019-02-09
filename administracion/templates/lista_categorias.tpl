@@ -3,31 +3,20 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Bootstrap Dashboard by Bootstrapious.com</title>
-    <meta name="description" content="">
+    <title>Administrador - Helping City</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
-    <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
-    <!-- Font Awesome CSS-->
-    <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
-    <!-- Fontastic Custom icon font-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="css/fontastic.css">
-    <!-- Google fonts - Roboto -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
-    <!-- jQuery Circle-->
     <link rel="stylesheet" href="css/grasp_mobile_progress_circle-1.0.0.min.css">
-    <!-- Custom Scrollbar-->
     <link rel="stylesheet" href="vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css">
-    <!-- theme stylesheet-->
     <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
-    <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="css/custom.css">
-    <!-- Favicon-->
     <link rel="shortcut icon" href="img/favicon.ico">
-    <!-- Tweaks for older IEs--><!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+     <script src="vendor/jquery/jquery.min.js"></script>
+     <script src="js/sweetalert2.all.min.js"></script>
   </head>
   <body>
 {include file="templates/nav.tpl"}
@@ -38,216 +27,133 @@
       <div class="breadcrumb-holder">
         <div class="container-fluid">
           <ul class="breadcrumb">
-            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-            <li class="breadcrumb-item active">Tables       </li>
+            <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+            <li class="breadcrumb-item active">Lista de Categorías</li>
           </ul>
         </div>
       </div>
       <section>
         <div class="container-fluid">
           <!-- Page Header-->
-          <header> 
-            <h1 class="h3 display">Tables            </h1>
-          </header>
           <div class="row">
-            <div class="col-lg-6">
+           
+            <div class="col-lg-12">
               <div class="card">
                 <div class="card-header">
-                  <h4>Basic Table</h4>
-                </div>
-                <div class="card-body">
-                  <div class="table-responsive">
-                    <table class="table">
-                      <thead>
-                        <tr>
-                          <th>#</th>
-                          <th>First Name</th>
-                          <th>Last Name</th>
-                          <th>Username</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th scope="row">1</th>
-                          <td>Mark</td>
-                          <td>Otto</td>
-                          <td>@mdo</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">2</th>
-                          <td>Jacob</td>
-                          <td>Thornton</td>
-                          <td>@fat</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">3</th>
-                          <td>Larry</td>
-                          <td>the Bird</td>
-                          <td>@twitter</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="card">
-                <div class="card-header">
-                  <h4>Striped Table</h4>
-                </div>
-                <div class="card-body">
-                  <div class="table-responsive">
-                    <table class="table table-striped">
-                      <thead>
-                        <tr>
-                          <th>#</th>
-                          <th>First Name</th>
-                          <th>Last Name</th>
-                          <th>Username</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th scope="row">1</th>
-                          <td>Mark</td>
-                          <td>Otto</td>
-                          <td>@mdo</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">2</th>
-                          <td>Jacob</td>
-                          <td>Thornton</td>
-                          <td>@fat</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">3</th>
-                          <td>Larry</td>
-                          <td>the Bird</td>
-                          <td>@twitter                            </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="card">
-                <div class="card-header">
-                  <h4>Striped table with hover effect</h4>
+                  
+<div class="row"> 
+    <div class="col-6"><h4>Lista de Categorías</h4></div>
+    <div class="col-6 text-right"><a id="modal-329132" href="#modal-container-329132" role="button" data-toggle="modal"><button class="btn btn-primary"><i class="fas fa-plus-circle"></i> Nuevo</button></a></div>
+</div>
                 </div>
                 <div class="card-body">
                   <div class="table-responsive">
                     <table class="table table-striped table-hover">
                       <thead>
                         <tr>
-                          <th>#</th>
-                          <th>First Name</th>
-                          <th>Last Name</th>
-                          <th>Username</th>
+                          <th width="10%">ID</th>
+                         
+                          <th width="80%">Nombre</th>
+
+                          <th width="10%"></th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <th scope="row">1</th>
-                          <td>Mark</td>
-                          <td>Otto</td>
-                          <td>@mdo</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">2</th>
-                          <td>Jacob</td>
-                          <td>Thornton</td>
-                          <td>@fat</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">3</th>
-                          <td>Larry</td>
-                          <td>the Bird</td>
-                          <td>@twitter                            </td>
-                        </tr>
+                        {$bucleCategoriasAdmin}
                       </tbody>
                     </table>
                   </div>
+                      {$paginador}
                 </div>
               </div>
             </div>
-            <div class="col-lg-6">
-              <div class="card">
-                <div class="card-header">
-                  <h4>Compact Table</h4>
-                </div>
-                <div class="card-body">
-                  <div class="table-responsive">
-                    <table class="table table-striped table-sm">
-                      <thead>
-                        <tr>
-                          <th>#</th>
-                          <th>First Name</th>
-                          <th>Last Name</th>
-                          <th>Username</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th scope="row">1</th>
-                          <td>Mark</td>
-                          <td>Otto</td>
-                          <td>@mdo</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">2</th>
-                          <td>Jacob</td>
-                          <td>Thornton</td>
-                          <td>@fat</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">3</th>
-                          <td>Larry</td>
-                          <td>the Bird</td>
-                          <td>@twitter      </td>
-                        </tr>
-                        <tr>
-                          <th scope="row">4</th>
-                          <td>Mark</td>
-                          <td>Otto</td>
-                          <td>@mdo</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">5</th>
-                          <td>Jacob</td>
-                          <td>Thornton</td>
-                          <td>@fat</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">6</th>
-                          <td>Larry</td>
-                          <td>the Bird</td>
-                          <td>@twitter       </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
+
           </div>
         </div>
       </section>
-     
+   
+              
+                
+                
+<div class="modal fade" id="modal-container-329132" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-sm" role="document">
+		<div class="modal-content"><div class="card p-3">
+			<button type="button" class="close text-right" data-dismiss="modal">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			<div class="modal-body introdatos">
+
+                            <form  action=""  method="POST" id="register" action="javascript:void(0)" >
+                            <input type="hidden" name="seccion" value="categorias" />
+                            <input type="hidden" name="fecha_alta" value="{$fechaHoy}" />
+
+                            <div class="row mb-3">
+                              <div class="col-md-12"><label for="nombre_categoria">Nombre categoría</label><input type="text" class="form-control" name="nombre_categoria" id="nombre_categoria" placeholder="Nombre de la categoría" value=""/></div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-12 text-center"><input type="submit" class="btn btn-primary" name="agregar" value="Nuevo registro" /></div>
+                            </div>
+                            </form>	
+                           
+                      </div> 
+		</div>			
+            </div>
+	</div>
+</div>
+                
+                
+              
       {include file="templates/footer.tpl"}
     </div>
     <!-- JavaScript files-->
-    <script src="vendor/jquery/jquery.min.js"></script>
+   
     <script src="vendor/popper.js/umd/popper.min.js"> </script>
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
     <script src="js/grasp_mobile_progress_circle-1.0.0.min.js"></script>
     <script src="vendor/jquery.cookie/jquery.cookie.js"> </script>
     <script src="vendor/chart.js/Chart.min.js"></script>
     <script src="vendor/jquery-validation/jquery.validate.min.js"></script>
     <script src="vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
     <!-- Main File-->
+     <script src="js/jquery.validate.min.js"></script>
+
     <script src="js/front.js"></script>
+    {$exitoOperacion}  
+{$exitoOperacionAlta}  
+{$exitoOperacionDelCat}
+    <script>
+        {literal}
+    //bloqueo modal
+    $(document).ready(function(){
+        $('#modal-container-329132').modal({show: false,backdrop: 'static', keyboard: false});
+
+        $('#modal-container-329132').on('hidden.bs.modal', function () {
+         location.reload();
+        })
+    });
+
+          {/literal}  
+    </script>
+    
+    <script>{literal}
+       $(document).ready(function() {
+            $('#register').submit(function(e) {
+            e.preventDefault();
+        }).validate({
+                debug: false,
+            rules: {
+                "nombre_categoria": {required: true}
+            },
+            messages: {
+                "nombre_categoria": {required: "Escribe un nombre para la categoría."}  
+            }
+
+        });
+});{/literal}
+  </script>
+  
+  
   </body>
 </html>
