@@ -86,7 +86,7 @@
 
 <form  action=""  method="POST" id="register" action="javascript:void(0)" >
 <input type="hidden" name="seccion" value="comercios" />
-
+<input type="hidden" name="pagina" value="lista_comercios" />
 <input type="hidden" name="fecha_alta" value="{$fechaHoy}" />
 
 <div class="row mb-3">

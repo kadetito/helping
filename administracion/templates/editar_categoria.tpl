@@ -98,6 +98,15 @@
 </div>
 
 <div class="row mb-3">
+        <div class="col-md-12"><label for="descripcion_categoria">Descripción categoría</label><textarea class="form-control" name="descripcion_categoria" placeholder="Breve descripción de la categoría">{$getDescriCateg}</textarea></div>
+</div>
+<div class="row mb-3">
+        <div class="col-md-12"><label for="tags_categoria">Tags categoría</label><textarea class="form-control" name="tags_categoria" placeholder="Escriba los tags separados por comas">{$getTagsCateg}</textarea></div>
+
+</div>
+
+
+<div class="row mb-3">
     <div class="col-md-12 text-center"><input type="submit" class="btn btn-primary" name="editar" value="Modificar registro" /></div>
 </div>
 </form>	           

@@ -84,13 +84,21 @@
 			<div class="modal-body introdatos">
 
                             <form  action=""  method="POST" id="register" action="javascript:void(0)" >
-                            <input type="hidden" name="seccion" value="categorias" />
+                            <input type="hidden" name="seccion" value="comercios" />
                             <input type="hidden" name="fecha_alta" value="{$fechaHoy}" />
+                            <input type="hidden" name="pagina" value="lista_categorias" />
 
+                          
+                            
                             <div class="row mb-3">
-                              <div class="col-md-12"><label for="nombre_categoria">Nombre categoría</label><input type="text" class="form-control" name="nombre_categoria" id="nombre_categoria" placeholder="Nombre de la categoría" value=""/></div>
+                              <div class="col-md-12"><label for="nombre_categoria">Nombre categoría</label><input type="text" class="form-control" name="nombre_categoria" id="nombre_categoria" placeholder="Nombre de la categoría" value="" required /></div>
                             </div>
-
+                            <div class="row mb-3">
+                                <div class="col-md-12"><label for="descripcion_categoria">Descripción categoría</label><textarea class="form-control" name="descripcion_categoria" placeholder="Breve descripción de la categoría"></textarea></div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md-12"><label for="tags_categoria">Tags categoría</label><textarea class="form-control" name="tags_categoria" placeholder="Escriba los tags separados por comas"></textarea></div>
+                            </div>
                             <div class="row mb-3">
                                 <div class="col-md-12 text-center"><input type="submit" class="btn btn-primary" name="agregar" value="Nuevo registro" /></div>
                             </div>
@@ -137,22 +145,7 @@
           {/literal}  
     </script>
     
-    <script>{literal}
-       $(document).ready(function() {
-            $('#register').submit(function(e) {
-            e.preventDefault();
-        }).validate({
-                debug: false,
-            rules: {
-                "nombre_categoria": {required: true}
-            },
-            messages: {
-                "nombre_categoria": {required: "Escribe un nombre para la categoría."}  
-            }
 
-        });
-});{/literal}
-  </script>
   
   
   </body>

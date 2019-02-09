@@ -22,7 +22,6 @@
               <ul id="ComerciosDrop" class="collapse list-unstyled {if $seccionactual eq "comercios"  or $seccionactual eq "categorias"}show{/if}">
                 <li {if $paginaActual eq "lista_comercios"}class="active"{/if}><a href="{$ruta}/administracion/lista_comercios.php">Comercios</a></li>
                 <li {if $paginaActual eq "lista_categorias"}class="active"{/if}><a href="{$ruta}/administracion/lista_categorias.php">Categorias</a></li>
-                <li {if $paginaActual eq "tipos_comercio"}class="active"{/if}><a href="{$ruta}/administracion/tipos_comercio.php">Tipos de Comercio</a></li>
                 <li {if $paginaActual eq "sectores_comercio"}class="active"{/if}><a href="{$ruta}/administracion/sectores_comercio.php">Sectores</a></li>
                 <li {if $paginaActual eq "servicios_comercio"}class="active"{/if}><a href="{$ruta}/administracion/servicios_comercio.php">Servicios</a></li>
               </ul>

@@ -44,7 +44,8 @@ $idrequest = '';
 $getId_cateGoria = '';
 $getNombreCateg = '';
 $getAliasCateg = '';
-
+$getDescriCateg='';
+$getTagsCateg='';
 //----------------------------------------------------------------------  
 //
 //
@@ -134,13 +135,15 @@ $getAliasCateg = '';
                                   $getGuia                    =$get_comer->getGuia();
                                   break;
                             case "lista_categorias":
-                                 $get_categ = Categorias::consultaDetalle($idrequest); 
+                                 $get_categ = Categorias::consultaDetalle($idrequest);
+                                 $getAliasCateg            =$get_categ->getAliasCateg();
+                                 $getDescriCateg           =$get_categ->getDescripcion();
+                                 $getTagsCateg             =$get_categ->getTags();
                                  $getNombreCateg           =$get_categ->getNombre();
-                                 $getAliasCateg           =$get_categ->getAliasCateg();
                                  $getId_cateGoria          =$get_categ->getId();
                                  break;
                    }
-                   
+                 
             }
             
         }
@@ -353,6 +356,10 @@ $smarty->assign("getCategoriaNombre",$getCategoriaNombre,true);
 $smarty->assign("getId_cateGoria",$getId_cateGoria,true);
 $smarty->assign("getNombreCateg",$getNombreCateg,true);
 $smarty->assign("getAliasCateg",$getAliasCateg,true);
+$smarty->assign("getDescriCateg",$getDescriCateg,true);
+$smarty->assign("getTagsCateg",$getTagsCateg,true);
+                               
+                                         
 
 $smarty->assign("reciboSector",$tipoCons,true);
 $smarty->assign("reciboPagina",$getPagina,true);

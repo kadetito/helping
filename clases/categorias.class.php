@@ -16,7 +16,7 @@ mb_http_output('UTF-8');
  	
 		 	//defino las propiedades
 		 	private $id_cate;
-		 	private $nombre_categoria;
+		 	
 		 	const TABLA = 'hc_cate_categoria_cliente'; //constante del nombre de la tabla
 		 	//const TABLA_F = 'foto_foto_album';
 		 	//metodos getters y setters
@@ -26,9 +26,7 @@ mb_http_output('UTF-8');
 		 	public function getNombre(){
 		 		return $this->nombre_categoria;	
 		 	}
-		 	public function getImagen(){
-		 		return $this->imagen_categoria;	
-		 	} 
+
 		 	public function getTags(){
 		 		return $this->tags_categoria;	
 		 	} 
@@ -44,9 +42,7 @@ mb_http_output('UTF-8');
 		 	public function setNombre(){
 		 		$this->nombre_categoria = $nombre_categoria;	
 		 	} 	
- 		 	public function setImagen(){
-		 		$this->imagen_categoria = $imagen_categoria;	
-		 	}
+
                         public function setTags(){
 		 		$this->tags_categoria = $tags_categoria;	
 		 	} 
@@ -58,11 +54,10 @@ mb_http_output('UTF-8');
 		 	} 
 		
             //constructor
-	    public function __construct($alias_categoria,$descripcion_categoria,$tags_categoria,$imagen_categoria,$nombre_categoria,$id_cate=null)
+	    public function __construct($alias_categoria,$descripcion_categoria,$tags_categoria,$nombre_categoria,$id_cate=null)
 	    {
 				$this->id_cate = $id_cate;
 				$this->nombre_categoria = $nombre_categoria;
-				$this->imagen_categoria = $imagen_categoria;
 				$this->tags_categoria = $tags_categoria;
                                 $this->descripcion_categoria = $descripcion_categoria;
                                 $this->alias_categoria = $alias_categoria;
@@ -165,7 +160,7 @@ mb_http_output('UTF-8');
 	       $consulta->execute(array(':id_cate' => $idrequest));
 	       $registro = $consulta->fetch();
 	       if($registro){ 
-	          return new self($registro['alias_categoria'],$registro['descripcion_categoria'],$registro['tags_categoria'],$registro['imagen_categoria'],$registro['nombre_categoria'],$idrequest);
+	          return new self($registro['alias_categoria'],$registro['descripcion_categoria'],$registro['tags_categoria'],$registro['nombre_categoria'],$idrequest);
 	       } else {
 	          return false;
 	       }
@@ -204,9 +199,26 @@ mb_http_output('UTF-8');
              
              
              
-             
-             
-           
+              //**----------------------------
+	      // INSERT TOTAL
+	      // inserta todo el registro
+	      //**---------------------
+	     public function inserTotalRegistro(){
+
+                $conexion = new Conexion();
+                $conexion->exec("SET NAMES 'utf8'");
+                $consulta = $conexion->prepare('INSERT INTO '.self::TABLA.' (alias_categoria,descripcion_categoria,tags_categoria,nombre_categoria) VALUES (:alias_categoria,:descripcion_categoria,:tags_categoria,:nombre_categoria)');
+
+                $consulta->bindParam(':alias_categoria',  $this->alias_categoria);
+                $consulta->bindParam(':descripcion_categoria', $this->descripcion_categoria);
+                $consulta->bindParam(':tags_categoria',  $this->tags_categoria); 
+                $consulta->bindParam(':nombre_categoria',$this->nombre_categoria);
+
+                $consulta->execute();
+                $this->id= $conexion->lastInsertId();
+	     }                  	 
+
+
            
             public function eliminarRegistroCat($id_cate){
 //                echo '<script>alert("hola")</script>';
