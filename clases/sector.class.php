@@ -103,7 +103,22 @@ mb_http_output('UTF-8');
                   return [ $registros ];
             }    
 
-           
+            
+             public static function consultadeIdaAlias($getId_sect){ 
+	       $conexion = new conexion(); 
+               $conexion->exec("SET NAMES 'utf8'");
+	       $consulta = $conexion->prepare('SELECT * FROM ' . self::TABLA . ' WHERE id_sect = :identi   ' );//uso la constante TABLA
+	       $consulta->bindParam(':identi', $getId_sect);
+	       $consulta->execute();
+	       //$registro = $consulta->setFetchMode(PDO::FETCH_ASSOC); 
+ 	       $registro = $consulta->fetch(); 
+              
+	       if($registro){
+	          return new self($registro['nombre_sector'],$getId_sect);	       
+               } else {   
+	          return false;
+	       }
+           }      
            
 
  	

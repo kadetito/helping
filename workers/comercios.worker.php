@@ -69,7 +69,7 @@ foreach($bucle_Comercios as $item):
                 
                 $bucleComercios.='
                                 <div class="owl-item dept_item"><a href="'.BASE_URL.'/'.$lengua.'/'.$nombreProvincia.'/c/'.$item['id_come'].'/'.filtrourl($item['nombre_comercio']).'">
-                                        <div class="dept_image"><img src="'.BASE_URL.'/img/'.$bucleFoto.'" alt="'.$item['nombre_comercio'].'"></div>
+                                        <div class="dept_image"><img src="'.BASE_URL.'/fotos_baja/'.$bucleFoto.'" alt="'.$item['nombre_comercio'].'"></div>
                                            <div class="dept_content">
                                                <div class="dept_title">'.substr($item['nombre_comercio'],0,100).'</div>
                                                <div class="dept_link">Ver más</div>
@@ -122,7 +122,7 @@ foreach($bucle_ComerciosAdmin as $itemAdmin):
                 $visible = $itemAdmin['activo'];
                 $bucleComerciosAdmin.='<tr>
                                         <th scope="row">'.$itemAdmin['id_come'].'</th>
-                                        <td><img style="height:80px;" src="'.BASE_URL.'/img/'.$bucleFotoAdmin.'" alt="'.$itemAdmin['nombre_comercio'].'" /></td>
+                                        <td><img style="height:80px;" src="'.BASE_URL.'/fotos_baja/'.$bucleFotoAdmin.'" alt="'.$itemAdmin['nombre_comercio'].'" /></td>
                                         <td>'.substr($itemAdmin['nombre_comercio'],0,100).'</td>
                                         <td>'.$itemAdmin['fecha_alta'].'</td>
                                         <td class="text-right limnp">
@@ -235,10 +235,10 @@ $idrequest = $_GET['id_come'];
             $contadorFotos = count($bucle_Fotos);
             foreach($bucle_Fotos as $itemFotoBucle):
                 if($bucle_Fotos){
-                  $bucleTodasFotos.= '<div class="thumbs"><a href="'.BASE_URL.'/img/'.$itemFotoBucle['archivo_foto'].'" class="group4" title="'.$itemFotoBucle['titulo_foto'].'"><img src="'.BASE_URL.'/img/'.$itemFotoBucle['archivo_foto'].'" alt="'.$itemFotoBucle['titulo_foto'].'" /></a></div>';  
+                  $bucleTodasFotos.= '<div class="thumbs"><a href="'.BASE_URL.'/fotos/'.$itemFotoBucle['archivo_foto'].'" class="group4" title="'.$itemFotoBucle['titulo_foto'].'"><img src="'.BASE_URL.'/fotos_baja/'.$itemFotoBucle['archivo_foto'].'" alt="'.$itemFotoBucle['titulo_foto'].'" /></a></div>';  
 
                 } else {
-                  $bucleTodasFotos.= '<div class="thumbs"><img src="'.BASE_URL.'/img/nophoto.png" alt="Helping City" /></div>';    
+                  $bucleTodasFotos.= '<div class="thumbs"><img src="'.BASE_URL.'/fotos_baja/nophoto.png" alt="Helping City" /></div>';    
                 }   
             endforeach; 
             

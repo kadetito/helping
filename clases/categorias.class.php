@@ -136,6 +136,36 @@ mb_http_output('UTF-8');
 	       }
               } 
               
+              
+               
+           public static function consultadeIdaAlias($getId_cate){ 
+	       $conexion = new conexion(); 
+	       $consulta = $conexion->prepare('SELECT * FROM ' . self::TABLA . ' WHERE id_cate = :identi   ' );//uso la constante TABLA
+	       $consulta->bindParam(':identi', $getId_cate);
+	       $consulta->execute();
+	       //$registro = $consulta->setFetchMode(PDO::FETCH_ASSOC); 
+ 	       $registro = $consulta->fetch(); 
+              
+	       if($registro){
+	          return new self($registro['alias_categoria'],$registro['descripcion_categoria'],$registro['tags_categoria'],$registro['imagen_categoria'],$registro['nombre_categoria'],$getId_cate);	       
+               } else {   
+	          return false;
+	       }
+           } 
+           
+           
+           
+            public function eliminarRegistroCat($id_cate){
+//                echo '<script>alert("hola")</script>';
+	       $conexion = new Conexion();
+	       if($id_cate) {
+	          $consulta = $conexion->prepare('DELETE FROM ' . self::TABLA .'  WHERE id_cate = :id_cate');
+	          $consulta->bindParam(':id_cate', $id_cate);
+	          $consulta->execute();	          
+	       }
+	       $conexion = null; //cierro conexion
+	     }     
+             
 
  	
 }

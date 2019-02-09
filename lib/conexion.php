@@ -10,6 +10,8 @@
 //define base url
 
 
+	  
+
  class Conexion extends PDO { //extends usa la libreria php PDO qu eno necesita ser incluida desde PHP5
  	//declaro las variables como privadas
    private $tipo_de_base = 'mysql';
@@ -36,3 +38,7 @@
    } 
 
  } 
+ 
+
+ 
+?>

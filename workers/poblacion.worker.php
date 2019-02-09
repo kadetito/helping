@@ -22,7 +22,7 @@ $buclePoblacionSelect='';
 if(isset($_POST['id_prov'])){
     
         $idProvincia = $_POST['id_prov'];
-        $resultadoSP = Poblacion::consultaporId($idProvincia);
+        $resultadoSP = Poblaciones::consultaporId($idProvincia);
         $bucleSP = $resultadoSP[0];
         $cont_registroSP=0;
         $contador = count($bucleSP);
@@ -30,7 +30,7 @@ if(isset($_POST['id_prov'])){
                 if($contador!=''){ 
 
                     //listado en desplegable
-                    $buclePoblacionSelect.='<option value="'.$itemSP['alias_provincia'].'">'.$itemSP['nombre_provincia'].'</option>';
+                    $buclePoblacionSelect.='<option value="'.$itemSP['id_pobl'].'">'.$itemSP['nombre_poblacion'].'</option>';
 
 
                 } else {

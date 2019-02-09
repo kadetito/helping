@@ -34,7 +34,7 @@ $html = '';
                 if($contador!=''){ 
 
                     //listado en desplegable
-                    $html.='<option value="'.$itemSP['alias_poblacion'].'">'.$itemSP['nombre_poblacion'].'</option>';
+                    $html.='<option value="'.$itemSP['id_pobl'].'">'.$itemSP['nombre_poblacion'].'</option>';
 
 
                 } 
@@ -43,7 +43,7 @@ $html = '';
 
 //fin
 //-----------------------------------------------------------------------------------------
-
+$smarty->assign("html",$html,true);
 
         
         

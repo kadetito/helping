@@ -76,20 +76,26 @@ require ROOT_DIR.'/lib/sesion.php';
 //    require (ROOT_DIR.'/workers/anuncios.worker.php');
 //    //eventos
 //    require (ROOT_DIR.'/workers/eventos.worker.php');   
+   //insertar registro
+    require (ROOT_DIR.'/workers/insertar.worker.php');
     //comercios
     require (ROOT_DIR.'/workers/comercios.worker.php'); 
 //    //noticias
 //    require (ROOT_DIR.'/workers/noticias.worker.php'); 
         //documentos
 //    require (ROOT_DIR.'/workers/documentos.worker.php'); 
-    //patron (siempre el ultimo)
+
+   //patron (siempre el ultimo)
     require (ROOT_DIR.'/workers/patron.worker.php');
+    
     //paginador
     require (ROOT_DIR.'/includes/paginador.php');
-
+$fechaHoy = date('Y-m-d');
 $smarty->assign("paginador",$paginador,true); 
 $smarty->assign("paginaActual",$paginaActual,true);
 $smarty->assign("seccionactual",$seccionactual,true);
+$smarty->assign("fechaHoy",$fechaHoy,true);
+
 
 $smarty->assign("ROOT_DIR",ROOT_DIR,true);
 

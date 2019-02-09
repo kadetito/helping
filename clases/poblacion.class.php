@@ -111,7 +111,21 @@ mb_http_output('UTF-8');
             }    
 
            
-           
+            
+            public static function consultadeIdaAlias($getId_pobl){ 
+	       $conexion = new conexion(); 
+	       $consulta = $conexion->prepare('SELECT * FROM ' . self::TABLA . ' WHERE id_pobl = :identi   ' );//uso la constante TABLA
+	       $consulta->bindParam(':identi', $getId_pobl);
+	       $consulta->execute();
+	       //$registro = $consulta->setFetchMode(PDO::FETCH_ASSOC); 
+ 	       $registro = $consulta->fetch(); 
+              
+	       if($registro){
+	          return new self($registro['id_prov'],$registro['nombre_poblacion'],$getId_pobl);	       
+               } else {   
+	          return false;
+	       }
+           }      
 
  	
 }

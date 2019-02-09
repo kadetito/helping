@@ -1,7 +1,9 @@
 .modal-lg {
     max-width: 60% !important;
 }
-
+.modal-sm {
+    max-width: 40% !important;
+}
 .row.vdivide [class*='form-control']:not(:last-child):after {
   background: #e0e0e0;
   width: 1px;padding-left:15px;padding-right:14px;
@@ -26,3 +28,20 @@
 .fa-eye{color:#5897fb;}
 .fa-eye-slash:hover{color:#333333;}
 .fa-eye:hover{color:#333333;}
+
+.formmodi .form-control{color:#446795 !important;}
+
+.thumbs{background-color:#000;width:100%;max-height:120px;float:left;overflow:hidden;}
+.thumbs img{width:150%;
+-webkit-transition: opacity 1s; /* For Safari 3.1 to 6.0 */
+  transition: opacity 1s;
+}
+.thumbs img:hover{opacity:0.7}
+.fotoseste{font-size:12px;letter-space:2px;margin-top:25px;margin-botom:20px;}
+
+.overfll{overflow-x:hidden;overflow-y:scroll;height:100vh}
+
+.miniboton{padding:0px;border:0px;background-color:transparent;}
+.delbott{font-size:11px;}
+
+.introdatos .error{color:#ea185c;}

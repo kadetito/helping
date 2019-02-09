@@ -83,55 +83,59 @@
 			</button>
 			<div class="modal-body introdatos">
                             
-<form role="form">
-<input type="hidden" name="fecha_alta" value="" />
+
+<form  action=""  method="POST" id="register" action="javascript:void(0)" >
+<input type="hidden" name="seccion" value="comercios" />
+
+<input type="hidden" name="fecha_alta" value="{$fechaHoy}" />
+
 <div class="row mb-3">
-  <div class="col-md-12"><label for="id_cate">Categoría</label><select class="form-control f1" name="id_cate"><option value="">Categoría</option>{$bucleCategoriasSelect}</select></div>
+  <div class="col-md-12"><label for="id_cate">Categoría</label><select class="form-control f1" name="id_cate" id="id_cate"><option value="">Categoría</option>{$bucleCategoriasSelect}</select></div>
 </div>
 <div class="row  mb-3">
-    <div class="col-md-3"><label for="id_prov">Provincia</label><select class="form-control" id="provincia" name="id_prov"><option value="">Provincia</option>{$bucleProvinciasSelectporId}</select></div>
+     <div class="col-md-3"><label for="id_prov">Provincia</label><select class="form-control" id="provincia" name="id_prov"><option value="">Provincia</option>{$bucleProvinciasSelectporId}</select></div>
     <div class="col-md-3"><label for="id_poble">Población</label><select class="form-control"  id="poblacion" name="id_pobl"><option value="">Población</option>{$buclePoblacionSelect}</select></div>
-    <div class="col-md-3"><label for="id_sect">Sector</label><select class="form-control" name="id_sect"><option value="">Sector</option>{$bucleSectorSelect}</select></div>
-    <div class="col-md-3"><label for="id_tico">Tipo comercio</label><select class="form-control" name="id_tico"><option value="">Tipo de comercio</option>{$bucleTicoSelect}</select></div>
+   
+    <div class="col-md-3"><label for="id_sect">Sector</label><select class="form-control" name="id_sect" id="id_sect"><option value="">Sector</option>{$bucleSectorSelect}</select></div>
+    <div class="col-md-3"><label for="id_tico">Tipo comercio</label><select class="form-control" name="id_tico" id="id_tico"><option value="">Tipo Comercio</option>{$bucleTicoSelect}</select></div>
 </div>
 <div class="row mb-3">
-  <div class="col-md-12"><label for="nombre_comercio">Nombre comercio</label><input type="text" class="form-control" name="nombre_comercio" placeholder="Nombre del comercio" /></div>
+  <div class="col-md-12"><label for="nombre_comercio">Nombre comercio</label><input type="text" class="form-control" name="nombre_comercio" id="nombre_comercio" placeholder="Nombre del comercio" value=""/></div>
 </div>
 <div class="row mb-3">
-  <div class="col-md-12"><label for="breve_comercio">Breve comercio</label><textarea class="form-control" name="breve_comercio" placeholder="Texto resumen"></textarea></div>
+  <div class="col-md-12"><label for="breve_comercio">Breve comercio</label><textarea class="form-control" name="breve_comercio" id="breve_comercio" placeholder="Texto resumen"></textarea></div>
 </div>
 <div class="row mb-3">
-  <div class="col-md-12"><label for="descripcion_comercio">Descripción comercio</label><textarea class="form-control" name="descripcion_comercio" rows="7" placeholder="Descripción"></textarea></div>
-</div>
-
-<div class="row mb-3">
-        <div class="col-md-3"><label for="direccion_comercio">Dirección comercio</label><input type="text" class="form-control" name="direccion_comercio" placeholder="Dirección" /></div>
-        <div class="col-md-3"><label for="codigo_postal">Código postal</label><input type="text" class="form-control" name="codigo_postal" placeholder="Codigo Postal" /></div>
-        <div class="col-md-3"><label for="telefono_comercio">Teléfono comercio</label><input type="text" class="form-control" name="telefono_comercio" placeholder="Teléfono" /></div>
-        <div class="col-md-3"><label for="fax_comercio">Fax comercio</label><input type="text" class="form-control" name="fax_comercio" placeholder="Fax" /></div>
-</div>
-<div class="row mb-3">
-        <div class="col-md-6"><label for="email_comercio">E-mail comercio</label><input type="email" class="form-control" name="email_comercio" placeholder="E-mail" /></div>
-        <div class="col-md-6"><label for="url_comercio">Url comercio</label><input type="text" class="form-control" name="url_comercio" placeholder="http://" /></div>
-</div>
-<div class="row mb-3">
-    <div class="col-md-3"><label for="facebook_comercio">Facebook</label><input type="text" class="form-control" name="facebook_comercio" placeholder="Facebook" /></div>
-    <div class="col-md-3"><label for="twitter_comercio">Twitter</label><input type="text" class="form-control" name="twitter_comercio" placeholder="Twitter" /></div>
-    <div class="col-md-3"><label for="instagram_comercio">Instagram</label><input type="text" class="form-control" name="instagram_comercio" placeholder="Instagram" /></div>
-    <div class="col-md-3"><label for="youtube_comercio">Youtube</label><input type="text" class="form-control" name="youtube_comercio" placeholder="Youtube" /></div>
+  <div class="col-md-12"><label for="descripcion_comercio">Descripción comercio</label><textarea class="form-control" name="descripcion_comercio" id="descripcion_comercio" rows="7" placeholder="Descripción"></textarea></div>
 </div>
 
 <div class="row mb-3">
-  <div class="col-md-12"><input type="checkbox" name="ccomercio_destacado"> <label for="ccomercio_destacado">Comercio Destacado</label></div>
+        <div class="col-md-3"><label for="direccion_comercio">Dirección comercio</label><input type="text" class="form-control" name="direccion_comercio" id="direccion_comercio" value="" placeholder="Dirección" /></div>
+        <div class="col-md-3"><label for="codigo_postal">Código postal</label><input type="text" class="form-control" name="codigo_postal" id="codigo_postal" value="" placeholder="Codigo Postal" /></div>
+        <div class="col-md-3"><label for="telefono_comercio">Teléfono comercio</label><input type="text" class="form-control" value="" name="telefono_comercio" id="telefono_comercio" placeholder="Teléfono" /></div>
+        <div class="col-md-3"><label for="fax_comercio">Fax comercio</label><input type="text" class="form-control" value="" name="fax_comercio" placeholder="Fax" /></div>
+</div>
+
+<div class="row mb-3">
+        <div class="col-md-6"><label for="email_comercio">E-mail comercio</label><input type="email" class="form-control" name="email_comercio" id="email_comercio" value="" placeholder="E-mail" /></div>
+        <div class="col-md-6"><label for="url_comercio">Url comercio</label><input type="text" class="form-control" value="" name="url_comercio" placeholder="http://" /></div>
 </div>
 <div class="row mb-3">
-  <div class="col-md-12"><label for="metadatos">Meta Data</label><textarea class="form-control f1" name="metadatos" placeholder="Metadatos"></textarea></div>
+    <div class="col-md-3"><label for="facebook_comercio">Facebook</label><input type="text" value="" class="form-control" name="facebook_comercio" placeholder="Facebook" /></div>
+    <div class="col-md-3"><label for="twitter_comercio">Twitter</label><input type="text" value="" class="form-control" name="twitter_comercio" placeholder="Twitter" /></div>
+    <div class="col-md-3"><label for="instagram_comercio">Instagram</label><input type="text" class="form-control" value="" name="instagram_comercio" placeholder="Instagram" /></div>
+    <div class="col-md-3"><label for="youtube_comercio">Youtube</label><input type="text" class="form-control" value=""  name="youtube_comercio" placeholder="Youtube" /></div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-md-12"><input type="checkbox" name="ccomercio_destacado" value="S" > <label for="ccomercio_destacado">Comercio Destacado</label></div>
+</div>
+
+<div class="row mb-3">
+    <div class="col-md-12"><label for="metas">Meta tags</label><textarea class="form-control f1" name="metas" id="metas" placeholder="Meta tags"></textarea></div>
 </div>
 <div class="row mb-3">
-    <div class="col-md-12"><label for="metas">Meta tags</label><textarea class="form-control f1" name="metas" placeholder="Meta tags"></textarea></div>
-</div>
-<div class="row mb-3">
-    <div class="col-md-12 text-center"><input type="submit" class="btn btn-primary" name="" value="Crear nuevo" /></div>
+    <div class="col-md-12 text-center"><input type="submit" class="btn btn-primary" name="agregar" value="Nuevo registro" /></div>
 </div>
 </form>	
                            
@@ -142,7 +146,7 @@
 </div>
                 
                 
-           {$exitoOperacion}     
+              
       {include file="templates/footer.tpl"}
     </div>
     <!-- JavaScript files-->
@@ -156,8 +160,11 @@
     <script src="vendor/jquery-validation/jquery.validate.min.js"></script>
     <script src="vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
     <!-- Main File-->
-    <script src="js/front.js"></script>
+     <script src="js/jquery.validate.min.js"></script>
 
+    <script src="js/front.js"></script>
+    {$exitoOperacion}  
+{$exitoOperacionAlta}  
     <script>
         {literal}
     //bloqueo modal
@@ -170,17 +177,64 @@
     });
 
     //AJAX combo poblacion segun provincia
+        $(document).ready(function(){
                 $("#provincia").on('change', function () {
                     $("#provincia option:selected").each(function () {
                         var id_prov = $(this).val();
                         var rootdir = "{$ruta}";
-                        $.post(rootdir+"/workers/poblacion.php", { id_prov: id_prov }, function(data) {
+                        $.post("http://www.webentorn.com/eventos/workers/poblacion.php", { id_prov: id_prov }, function(data) {
                             $("#poblacion").html(data);
                         });			
                     });
                });
- 
+ });
           {/literal}  
     </script>
+    
+    <script>{literal}
+       $(document).ready(function() {
+            $('#register').submit(function(e) {
+            e.preventDefault();
+        }).validate({
+                debug: false,
+            rules: {
+                "id_cate": {required: true,number:true},
+                "id_prov": {required: true,number:true},
+                "id_pobl": {required: true,number:true},
+                "email_comercio": {required: true,email: true},
+                "id_sect": {required: true,number:true},
+                "id_tico": {required: true,number:true},
+                "codigo_postal": {required: true,number:true,minlength: 5,maxlength: 5},
+                "nombre_comercio": {required: true},
+                "breve_comercio": {required: true,minlength: 50},
+                "descripcion_comercio": {required: true,minlength: 50},
+                "direccion_comercio": {required: true},
+                "telefono_comercio": {required: true,number:true,minlength: 9,maxlength: 9},
+                "metas": {required: true,minlength: 70}
+
+        },
+            messages: {
+
+                "id_cate": {required: "Escoge una categoría."},
+                "id_prov": {required: "Escoge una provincia."},
+                "id_pobl": {required: "Escoge una población."},
+                "email_comercio": {required: "Introduce un correo válido.",email: ""},
+                "id_sect": {required: "Escoge un sector."},
+                "id_tico": {required: "Escoge un tipo de comercio."},
+                "codigo_postal": {required: "Introduce tu código postal.",number: "Introduce un código postal válido.",maxlength: "Debe contener 5 dígitos.",minlength: "Debe contener 5 dígitos."},
+                "nombre_comercio": {required: "Escribe un nombre para comercio."},
+                "breve_comercio": {required: "Introduce una breve descripción.",minlength: "Debe contener 50 carácteres como mínimo."},
+                "descripcion_comercio": {required: "Introduce una descripción.",minlength: "Debe contener 50 carácteres como mínimo."},
+                "direccion_comercio": {required: "Es necesaria una direccion."},
+                "telefono_comercio": {required: "Introduce un teléfono.",number: "Introduce un teléfono válido.",maxlength: "Debe contener 9 dígitos.",minlength: "Debe contener 9 dígitos."},
+                "metas": {required: "Introduce una meta descripción.",minlength: "Debe contener 70 carácteres como mínimo."}
+
+            }
+
+        });
+});{/literal}
+  </script>
+  
+  
   </body>
 </html>

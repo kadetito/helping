@@ -1,5 +1,6 @@
 <?php 
 
+
  ////comprobar sesion login
 if(isset($_SESSION['uid']))
 {
@@ -10,3 +11,5 @@ if(empty($session_uid))
 {
 $sesion = 0;
 }
+
+?>

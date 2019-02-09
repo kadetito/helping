@@ -21,7 +21,7 @@
     <div class="row">
         <div class="col-md-8">
             <h2>{$comerTitulo}</h2>
-            <div class="recortefotoprincipal"><a href="{$ruta}/img/{$imagenPrincipal}" class="ajax"><img src="{$ruta}/img/{$imagenPrincipal}" alt="{$comerTitulo}" /></a></div>
+            <div class="recortefotoprincipal"><a href="{$ruta}/fotos/{$imagenPrincipal}" class="ajax"><img src="{$ruta}/fotos_baja/{$imagenPrincipal}" alt="{$comerTitulo}" /></a></div>
             <h4>{$getBreve_comercio}</h4>
             <p>{$getDescripcion_comercio}</p>
             <p>Imagenes: {$bucleTodasFotos}</p>

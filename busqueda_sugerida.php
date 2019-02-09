@@ -29,7 +29,7 @@ $data = '';
         $data[] = $registros['palabra'];
     }
 //echo json_encode($data);
-echo '{"items":['.json_encode(array('name' => $data)).']}';
+echo '{"items":['.json_encode(array('name' => $data.',')).']}';
 //echo '{"name":"Ashok"}]}';
 
 

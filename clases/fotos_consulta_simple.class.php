@@ -82,7 +82,15 @@ private $fecha_foto;
 	       }
 	       $conexion = null; //cierro conexion
 	     }     
-
+             
+             
+	    public function eliminarRegistroFoto($id_fotoS){echo '<script>alert("'.$id_fotoS.'");</script>';
+	       $conexion = new Conexion();
+                   $consulta = $conexion->prepare('DELETE FROM ' . self::TABLA .'  WHERE id_foto = :id_foto');
+                   $consulta->bindParam(':id_foto', $id_fotoS);
+	          $consulta->execute();	          
+	       $conexion = null; //cierro conexion
+	     }     
             
   	     //**
 	     // OBTENER FOTOS
@@ -155,7 +163,7 @@ private $fecha_foto;
                             $campo = 'id_noti';
                             break;
                     }
-                    
+                    //echo '<script>alert("'.$idrequest.','.$campo.'")</script>';
                   $conexion = new conexion();//objeto conexion
                   $consulta = $conexion->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM " . self::TABLA . " 
                           WHERE ".$campo." = ".$idrequest."
@@ -169,9 +177,89 @@ private $fecha_foto;
                 }    
             
             
-            
-            
-            
- 	
+              //**
+	     // OBTENER FOTOS ADMIN
+	     // obtiene todas las fotos de un id
+             // tipocons determina si es evento, noticia, comercio etc
+             // y damos valor al campo
+             // NOTA: saltamos el primer registro por fecha ya que aparece como foto prioncipal en el detalle
+	     //**
+                public static function consultaTodasFotosAdmin($idrequest,$tipoCons){  
+                  $conexion = new conexion();//objeto conexion
+                  $paginaFotos = isset($_GET['paginaFotos']) ? (int)$_GET['paginaFotos'] : 1;
+                  $porPaginaFotos = isset($_GET['por-paginaFotos']) && $_GET['por-paginaFotos'] <= 50 ? (int)$_GET['por-paginaFotos'] : 10;
+                  $inicioFotos = ($paginaFotos > 1) ? ($paginaFotos * $porPaginaFotos) - $porPaginaFotos : 0;
+                   switch ($tipoCons) {
+                        case "":
+                                $consulta = $conexion->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM " . self::TABLA . " 
+                                WHERE id_even = ".$idrequest."
+                                ORDER by fecha_foto ASC LIMIT 0,99999
+                                ");
+                            
+                            break;
+                        case "eventos":
+                                $consulta = $conexion->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM " . self::TABLA . " 
+                                WHERE id_even = ".$idrequest."
+                                ORDER by fecha_foto ASC LIMIT 0,99999
+                                ");
+                            
+                            break;
+                        case "comercios":
+                                $consulta = $conexion->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM " . self::TABLA . " 
+                                WHERE id_come = ".$idrequest."
+                                ORDER by fecha_foto ASC LIMIT 0,99999
+                                ");
+                            break;
+                        case "noticias":
+                                $consulta = $conexion->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM " . self::TABLA . " 
+                                WHERE id_noti = ".$idrequest."
+                                ORDER by fecha_foto ASC LIMIT 0,99999
+                                ");
+                           
+                            break;
+                    }
+                  $consulta->execute();
+                  $registrosFotos = $consulta->fetchAll(PDO::FETCH_ASSOC); 
+                  $totalFotos = $conexion->query("SELECT FOUND_ROWS() as totalFotos")->fetch()['totalFotos'];
+                  $paGinasFotos = ceil($totalFotos / $porPaginaFotos);
+                  return [ $registrosFotos, $paGinasFotos, $porPaginaFotos, $paginaFotos ];
+                }    
+
+                 public static function insertFotosMasivo($id_comefotos,$fechaFotos,$countfiles,$fechayHora,$tipoCons){        
+                                $conexion = new conexion();//objeto conexion
+                                switch ($tipoCons) {
+                                    case "":
+                                              $query = "INSERT INTO " . self::TABLA . " (archivo_foto,id_even,fecha_foto) VALUES(?,".$id_comefotos.",'".$fechaFotos."')";
+                                        break;
+                                    case "eventos":
+                                              $query = "INSERT INTO " . self::TABLA . " (archivo_foto,id_even,fecha_foto) VALUES(?,".$id_comefotos.",'".$fechaFotos."')";
+                                        break;
+                                    case "comercios":
+                                              $query = "INSERT INTO " . self::TABLA . " (archivo_foto,id_come,fecha_foto) VALUES(?,".$id_comefotos.",'".$fechaFotos."')";
+                                        break;
+                                    case "noticias":
+                                              $query = "INSERT INTO " . self::TABLA . " (archivo_foto,id_noti,fecha_foto) VALUES(?,".$id_comefotos.",'".$fechaFotos."')";
+                                        break;
+                                }
+                                  $statement = $conexion->prepare($query);
+                                  for($i=0;$i<$countfiles;$i++){
+                                    // foto original
+                                    $filename = $_FILES['files']['name'][$i];
+                                    $ext = end((explode(".", $filename)));
+                                    $valid_ext = array("png","jpeg","jpg");
+                                    if(in_array($ext, $valid_ext)){
+                                                $image = new Imagick($_FILES['files']['tmp_name'][$i]);
+                                                $image->cropThumbnailImage(368,368);   	
+                                    if(move_uploaded_file($_FILES['files']['tmp_name'][$i],'../fotos/'.$fechayHora.'_'.$filename))
+                                      {      		
+                                        $image->writeImage( '../fotos_baja/'.$fechayHora.'_'.$filename.'' );
+                                        $statement->execute(array($fechayHora.'_'.$filename));
+                                      }
+                                    }   
+                                  }
+                 }
+  
+  
+
 }
  

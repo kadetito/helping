@@ -30,19 +30,19 @@ mb_http_output('UTF-8');
  		 	
   
 		 	public function setId(){
-		 		$this->id_sect = $id_sect;
+		 		$this->id_tico = $id_tico;
 		 	}
-		 	public function setNombreSect(){
-		 		$this->nombre_sector = $nombre_sector;	
+		 	public function setNombreTico(){
+		 		$this->nombre_tipo = $nombre_tipo;	
 		 	} 	
 
                         
                         
             //constructor
-	    public function __construct($nombre_sector,$id_sect=null)
+	    public function __construct($nombre_tipo,$id_tico=null)
 	    {
-				$this->id_sect = $id_sect;
-				$this->nombre_sector = $nombre_sector;
+				$this->id_tico = $id_tico;
+				$this->nombre_tipo = $nombre_tipo;
 
 	    }
 	    
@@ -86,7 +86,20 @@ mb_http_output('UTF-8');
              
   
  
-
+        public static function consultadeIdaAlias($getId_tico){ 
+	       $conexion = new conexion(); 
+	       $consulta = $conexion->prepare('SELECT * FROM ' . self::TABLA . ' WHERE id_tico = :identi   ' );//uso la constante TABLA
+	       $consulta->bindParam(':identi', $getId_tico);
+	       $consulta->execute();
+	       //$registro = $consulta->setFetchMode(PDO::FETCH_ASSOC); 
+ 	       $registro = $consulta->fetch(); 
+              
+	       if($registro){
+	          return new self($registro['nombre_tipo'],$getId_tico);	       
+               } else {   
+	          return false;
+	       }
+           } 
            
            
 

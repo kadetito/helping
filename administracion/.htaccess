@@ -38,4 +38,5 @@ RewriteCond %{REQUEST_FILENAME} !-d
 # Rewrite the rest to the index.php file in your public folder
 #RewriteRule ^.*$ /administracion/index.php [NC,L]
 
-RewriteRule ^adh/([0-9a-z_-]+)/([0-9a-z_-]+)/([^/]*)?$ editar_registro.php?seccion=$1&pagina=$2&identificadorregistro=$3[L]
+RewriteRule ^adh/([0-9a-z_-]+)/([0-9a-z_-]+)/([^/]*)?$ editar_registro.php?seccion=$1&pagina=$2&idendoregis=$3 [L]
+RewriteRule ^adh/([0-9a-z_-]+)/([0-9a-z_-]+)/([^/]*)/([^/]*)?$ editar_registro.php?seccion=$1&pagina=$2&idendoregis=$3&okdel=$4 [L]
