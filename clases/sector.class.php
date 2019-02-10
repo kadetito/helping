@@ -41,9 +41,9 @@ mb_http_output('UTF-8');
             //constructor
 	    public function __construct($nombre_sector,$id_sect=null)
 	    {
-				$this->id_sect = $id_sect;
+				
 				$this->nombre_sector = $nombre_sector;
-
+                                $this->id_sect = $id_sect;
 	    }
 	    
 
@@ -58,7 +58,7 @@ mb_http_output('UTF-8');
                   $conexion = new conexion();//objeto conexion
                   $conexion->exec("SET NAMES 'utf8'");
                   $consulta = $conexion->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM " . self::TABLA . " 
-                          ORDER BY nombre_provincia DESC 
+                          ORDER BY nombre_sector DESC 
                           LIMIT {$inicio},{$porPagina}");//uso la constante TABLA
                   $consulta->execute();
                   $registros = $consulta->fetchAll(PDO::FETCH_ASSOC); 
@@ -121,6 +121,74 @@ mb_http_output('UTF-8');
            }      
            
 
- 	
+               //**----------------------------
+	      // UPDATE TOTAL
+	      // actualiza todo el registro
+	      //**---------------------
+
+	     public static function updateTotalRegistroSect($setSectTitulo,$setIdSect){
+                 
+                   $conexion = new Conexion();
+                    $conexion->exec("SET NAMES 'utf8'");
+                    $consulta = $conexion->prepare('UPDATE '. self::TABLA .' SET 
+                    nombre_sector  = :setSectTitulo
+                       WHERE id_sect = :setIdSect');
+                    $consulta->bindParam(':setSectTitulo',$setSectTitulo);
+                    $consulta->bindParam(':setIdSect', $setIdSect);
+                    $consulta->execute();
+                    $conexion = null; 
+	      }     
+             
+           
+           
+            public function eliminarRegistroSec($id_sect){
+//                echo '<script>alert("hola")</script>';
+	       $conexion = new Conexion();
+	       if($id_sect) {
+	          $consulta = $conexion->prepare('DELETE FROM ' . self::TABLA .'  WHERE id_sect = :id_sect');
+	          $consulta->bindParam(':id_sect', $id_sect);
+	          $consulta->execute();	          
+	       }
+	       $conexion = null; //cierro conexion
+	     }     
+             
+       
+             //**
+	     // OBTENER DETALLE
+	     // obtiene el detalle del registro pedido por url get
+	     //**
+  	     public static function consultaDetalle($idrequest){
+	       $conexion = new conexion(); 
+                  $conexion->exec("SET NAMES 'utf8'");
+               $consulta = $conexion->prepare("SELECT * FROM " . self::TABLA . " WHERE id_sect = :id_sect ");
+	       $consulta->execute(array(':id_sect' => $idrequest));
+	       $registro = $consulta->fetch();
+	       if($registro){ 
+	          return new self($registro['nombre_sector'],$idrequest);
+	       } else {
+	          return false;
+	       }
+            }  
+            
+            
+              //**----------------------------
+	      // INSERT TOTAL
+	      // inserta todo el registro
+	      //**---------------------
+	     public function inserTotalRegistroSector(){
+
+                $conexion = new Conexion();
+                $conexion->exec("SET NAMES 'utf8'");
+                $consulta = $conexion->prepare('INSERT INTO '.self::TABLA.' (nombre_sector) VALUES (:nombre_sector)');
+
+                $consulta->bindParam(':nombre_sector',$this->nombre_sector);
+
+                $consulta->execute();
+                $this->id= $conexion->lastInsertId();
+	     }     
+             
+             
+            
+            
 }
  

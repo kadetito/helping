@@ -45,3 +45,10 @@
 .delbott{font-size:11px;}
 
 .introdatos .error{color:#ea185c;}
+
+
+
+/* fix = code from bootstrap 3 */
+tbody.collapse.in {
+  display: table-row-group;
+}

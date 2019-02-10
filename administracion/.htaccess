@@ -43,3 +43,9 @@ RewriteRule ^adh/([0-9a-z_-]+)/([0-9a-z_-]+)/([^/]*)/([^/]*)?$ editar_registro.p
 
 RewriteRule ^adc/([0-9a-z_-]+)/([0-9a-z_-]+)/([^/]*)?$ editar_categoria.php?seccion=$1&pagina=$2&idendoregis=$3 [L]
 RewriteRule ^adc/([0-9a-z_-]+)/([0-9a-z_-]+)/([^/]*)/([^/]*)?$ editar_categoria.php?seccion=$1&pagina=$2&idendoregis=$3&okdol=$4 [L]
+
+RewriteRule ^ads/([0-9a-z_-]+)/([0-9a-z_-]+)/([^/]*)?$ editar_sector.php?seccion=$1&pagina=$2&idendoregis=$3 [L]
+RewriteRule ^ads/([0-9a-z_-]+)/([0-9a-z_-]+)/([^/]*)/([^/]*)?$ editar_sector.php?seccion=$1&pagina=$2&idendoregis=$3&okdsl=$4 [L]
+
+RewriteRule ^adsv/([0-9a-z_-]+)/([0-9a-z_-]+)/([^/]*)?$ editar_servicio.php?seccion=$1&pagina=$2&idendoregis=$3 [L]
+RewriteRule ^adsv/([0-9a-z_-]+)/([0-9a-z_-]+)/([^/]*)/([^/]*)?$ editar_servicio.php?seccion=$1&pagina=$2&idendoregis=$3&okdsvl=$4 [L]

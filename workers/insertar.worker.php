@@ -120,7 +120,21 @@ $exitoOperacionAlta='';
                                       $get_MetodoInsertCat = new Categorias($alias_categoria,$descripcion_categoria,$tags_categoria,$nombre_categoria);
                                       $get_MetodoInsertCat->inserTotalRegistro();
                                       $retornoUrl = BASE_URL."/administracion/lista_categorias.php";
-                                    break;                                    
+                                    break;  
+                             case "lista_sector":  
+                                      $nombre_sector = filter_input(INPUT_POST, 'nombre_sector');
+                                      //metodo (NO ESTATICO, RECORDAR)
+                                      $get_MetodoInsertCat = new Sectores($nombre_sector);
+                                      $get_MetodoInsertCat->inserTotalRegistroSector();
+                                      $retornoUrl = BASE_URL."/administracion/lista_sector.php";
+                                    break; 
+                             case "lista_servicio":  
+                                      $nombre_catservicio = filter_input(INPUT_POST, 'nombre_catservicio');
+                                      $get_MetodoInsertCat = new Servicios($nombre_catservicio);
+                                      $get_MetodoInsertCat->inserTotalRegistroCatServ();
+                                     
+                                      $retornoUrl = BASE_URL."/administracion/lista_servicio.php";
+                                    break; 
                                 }
                           break;
                       }

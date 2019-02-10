@@ -46,6 +46,11 @@ $getNombreCateg = '';
 $getAliasCateg = '';
 $getDescriCateg='';
 $getTagsCateg='';
+$getNombreSect='';
+$getId_seCtor='';
+
+$getNombreCatServ='';
+$getId_CatServ='';
 //----------------------------------------------------------------------  
 //
 //
@@ -71,10 +76,10 @@ $getTagsCateg='';
            $tipoCons = filter_input(INPUT_GET, 'seccion');
            $getPagina = filter_input(INPUT_GET, 'pagina');
            $idrequest = $identificador;
-    ///si la peticion la hacemos desde alguna seccion que no contenga fotos           
-    if($getPagina=='lista_categorias'){
-        
-    } else {
+            ///si la peticion la hacemos desde alguna seccion que no contenga fotos           
+            if($getPagina=='lista_categorias'){
+
+            } else {
             //** consulta todas las fotos de este comercio
             //----------------------------------------------------------------------                
             $resultadoBucleFoto = Fotos::consultaTodasFotosAdmin($idrequest,$tipoCons);
@@ -142,6 +147,16 @@ $getTagsCateg='';
                                  $getNombreCateg           =$get_categ->getNombre();
                                  $getId_cateGoria          =$get_categ->getId();
                                  break;
+                            case "lista_sector":
+                                 $get_sect = Sectores::consultaDetalle($idrequest);
+                                 $getNombreSect         =$get_sect->getNombreSect();
+                                 $getId_seCtor          =$get_sect->getId();
+                                 break;
+                            case "lista_servicio":
+                                 $get_serv = Servicios::consultaDetalleCatServicio($idrequest);
+                                 $getNombreCatServ       =$get_serv->getNombreCatServ();
+                                 $getId_CatServ          =$get_serv->getIdCat();
+                                 break;
                    }
                  
             }
@@ -192,10 +207,6 @@ $getTagsCateg='';
                                     $retornoUrl = BASE_URL."/administracion/adh/".$sector."/".$pagina."/".$setId_come;
                                     break;
                             case "lista_categorias":
-
-                                
-                                    
-                                
                                     $setId_cate             = filter_input(INPUT_POST, 'id_cate');                          
                                     $setCateTitulo          = filter_input(INPUT_POST, 'nombre_categoria');
                                     $setCateAlias          = filter_input(INPUT_POST, 'alias_categoria');
@@ -204,12 +215,25 @@ $getTagsCateg='';
                                     //metodo
                                     $get_MetodoUpdate = Categorias::updateTotalRegistro($setCateAlias,$tagsSetCategoria,$setDesAlias,$setCateTitulo,$setId_cate); 
                                     //pagina de retorno
-                                    
                                     $retornoUrl = BASE_URL."/administracion/adc/".$sector."/".$pagina."/".$setId_cate;
-                                  
                                     break;
-                              }
-
+                            case "lista_sector":
+                                    $setIdSect             = filter_input(INPUT_POST, 'id_sect');                          
+                                    $setSectTitulo          = filter_input(INPUT_POST, 'nombre_sector');
+                                    //metodo
+                                    $get_MetodoUpdate = Sectores::updateTotalRegistroSect($setSectTitulo,$setIdSect); 
+                                    //pagina de retorno
+                                    $retornoUrl = BASE_URL."/administracion/ads/".$sector."/".$pagina."/".$setIdSect;
+                                    break;
+                            case "lista_servicio":
+                                    $setIdCatServ             = filter_input(INPUT_POST, 'id_serv');                          
+                                    $setServCatTitulo          = filter_input(INPUT_POST, 'nombre_catservicio');
+                                    //metodo
+                                    $get_MetodoUpdate = Servicios::updateTotalRegistroCatServ($setServCatTitulo,$setIdCatServ); 
+                                    //pagina de retorno
+                                    $retornoUrl = BASE_URL."/administracion/adsv/".$sector."/".$pagina."/".$setIdCatServ;
+                                    break;
+                        }
                       }
                     
                     //devuelvo mensaje exito y me quedo en el registro
@@ -364,8 +388,14 @@ $smarty->assign("getNombreCateg",$getNombreCateg,true);
 $smarty->assign("getAliasCateg",$getAliasCateg,true);
 $smarty->assign("getDescriCateg",$getDescriCateg,true);
 $smarty->assign("getTagsCateg",$getTagsCateg,true);
-                               
-                                         
+                    
+$smarty->assign("getNombreCatServ",$getNombreCatServ,true);
+$smarty->assign("getId_CatServ",$getId_CatServ,true);
+
+
+                                  
+$smarty->assign("getNombreSect",$getNombreSect,true);
+$smarty->assign("getId_seCtor",$getId_seCtor,true);
 
 $smarty->assign("reciboSector",$tipoCons,true);
 $smarty->assign("reciboPagina",$getPagina,true);
